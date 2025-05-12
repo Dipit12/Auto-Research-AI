@@ -10,8 +10,11 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
+    "@google/genai": "^0.13.0",
+    "@prisma/client": "^6.7.0",
     "@types/express": "^5.0.1",
     "express": "^5.1.0",
-    "prisma": "^6.7.0"
+    "prisma": "^6.7.0",
+    "serpapi": "^2.1.0"
   }
 }
