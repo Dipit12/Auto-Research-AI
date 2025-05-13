@@ -2,6 +2,7 @@
 import './App.css'
 import { SignedIn, SignedOut, SignInButton, UserButton } from '@clerk/clerk-react'
 import HomePage from './components/HomePage'
+import Dashboard from './components/Dashboard'
 
 function App(){
   return(
@@ -12,6 +13,7 @@ function App(){
       </SignedOut>
       <SignedIn>
         <UserButton />
+        <Dashboard/>
       </SignedIn>
     </>
   )
