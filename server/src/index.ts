@@ -128,9 +128,10 @@ async function generateSummary(extractedLinks: string[]){
         });
       
        console.log(response.text)
+       return response.text
       }
       
-      await main();
+      return await main();
       
 }
 
@@ -179,20 +180,20 @@ app.post("/search", async (req, res) : Promise<any> => {
         console.log(summary)
         
         // Step 4: Save to database
-        // try {
-        //     await prisma.post.create({
-        //         data: {
-        //             query: query,
-        //             //@ts-ignore
-        //             summarisedData: summary,
+        try {
+            await prisma.post.create({
+                data: {
+                    query: query,
+                    //@ts-ignore
+                    summarisedData: summary,
                     
-        //         }
-        //     });
-        //     console.log("Saved to database");
-        // } catch (dbError) {
-        //     console.error("Database error:", dbError);
-        //     // Continue even if DB fails
-        // }
+                }
+            });
+            console.log("Saved to database");
+        } catch (dbError) {
+            console.error("Database error:", dbError);
+            // Continue even if DB fails
+        }
 
         // Step 5: Return response to client
         return res.status(200).json({

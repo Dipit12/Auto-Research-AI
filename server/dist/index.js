@@ -113,9 +113,10 @@ function generateSummary(extractedLinks) {
           `,
                 });
                 console.log(response.text);
+                return response.text;
             });
         }
-        yield main();
+        return yield main();
     });
 }
 // Routes
@@ -158,26 +159,27 @@ app.post("/search", (req, res) => __awaiter(void 0, void 0, void 0, function* ()
         const summary = yield generateSummary(usefulLinks);
         console.log(summary);
         // Step 4: Save to database
-        // try {
-        //     await prisma.searchQuery.create({
-        //         data: {
-        //             query: query,
-        //             results: JSON.stringify(usefulLinks),
-        //             createdAt: new Date()
-        //         }
-        //     });
-        //     console.log("Saved to database");
-        // } catch (dbError) {
-        //     console.error("Database error:", dbError);
-        //     // Continue even if DB fails
-        // }
-        // // Step 5: Return response to client
-        // return res.status(200).json({
-        //     success: true,
-        //     query: query,
-        //     links: usefulLinks,
-        //     // summary: summary // Uncomment when LLM is implemented
-        // });
+        try {
+            yield prisma.post.create({
+                data: {
+                    query: query,
+                    //@ts-ignore
+                    summarisedData: summary,
+                }
+            });
+            console.log("Saved to database");
+        }
+        catch (dbError) {
+            console.error("Database error:", dbError);
+            // Continue even if DB fails
+        }
+        // Step 5: Return response to client
+        return res.status(200).json({
+            success: true,
+            query: query,
+            links: usefulLinks,
+            summary: summary
+        });
     }
     catch (err) {
         console.error("Server error:", err);
