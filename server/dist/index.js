@@ -16,10 +16,12 @@ const express_1 = __importDefault(require("express"));
 const { getJson } = require("serpapi");
 const client_1 = require("@prisma/client");
 const genai_1 = require("@google/genai");
+const cors_1 = __importDefault(require("cors"));
 // Initialize Prisma Client
 const prisma = new client_1.PrismaClient();
 const app = (0, express_1.default)();
 const port = 3000;
+app.use((0, cors_1.default)());
 // Middleware
 app.use(express_1.default.json());
 // Function to extract useful links from search results

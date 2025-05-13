@@ -2,12 +2,14 @@ import express from 'express';
 const { getJson } = require("serpapi");
 import { PrismaClient } from '@prisma/client';
 import { GoogleGenAI } from "@google/genai";
+import cors from 'cors';
+
 
 // Initialize Prisma Client
 const prisma = new PrismaClient();
 const app = express();
 const port = 3000;
-
+app.use(cors());
 // Middleware
 app.use(express.json());
 
