@@ -30,7 +30,7 @@ Auto Research AI - README
 ## Setup Instructions
 ### 1. Clone the repository
 ```bash
-git clone https://github.com/your-username/auto-research-ai.git
+git clone https://github.com/Dipit12/auto-research-ai.git
 cd auto-research-ai
 ```
 ### 2. Backend Setup
@@ -39,7 +39,7 @@ cd server
 npm install
 npx prisma generate
 npx prisma migrate dev --name init
-npm run dev
+node dist/index
 ```
 Create a `.env` file in the `server/` directory with:
 Auto Research AI - README
