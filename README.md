@@ -30,7 +30,7 @@ Auto Research AI - README
 ## Setup Instructions
 ### 1. Clone the repository
 ```bash
-git clone https://github.com/Dipit12/auto-research-ai.git
+git clone https://github.com/Dipit12/Auto-Research-AI.git
 cd auto-research-ai
 ```
 ### 2. Backend Setup
